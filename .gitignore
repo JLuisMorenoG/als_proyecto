@@ -1,0 +1,30 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+env/
+venv/
+.venv/
+
+# IDE/editor configs
+.vscode/
+.idea/
+
+# Flask/Redis files
+instance/
+*.db
+*.rdb
+*.aof
+
+# Docker
+docker/redis_data/
+*.log
+
+# System
+.DS_Store
+Thumbs.db
+
+# Otros
+*.zip
