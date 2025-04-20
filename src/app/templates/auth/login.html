@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Iniciar sesión</title>
+</head>
+<body>
+    <h1>Iniciar sesión</h1>
+
+    {% with mensajes = get_flashed_messages() %}
+      {% if mensajes %}
+        <ul>
+          {% for msg in mensajes %}
+            <li>{{ msg }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <form method="post">
+        <label for="email">Correo electrónico:</label><br>
+        <input type="email" name="email" required><br><br>
+
+        <label for="contrasinal">Contraseña:</label><br>
+        <input type="password" name="contrasinal" required><br><br>
+
+        <input type="submit" value="Entrar">
+    </form>
+
+    <p>¿No tienes cuenta? <a href="{{ url_for('auth.registro') }}">Regístrate</a></p>
+</body>
+</html>
