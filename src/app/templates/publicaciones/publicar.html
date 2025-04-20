@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear publicación</title>
+</head>
+<body>
+    <h1>Crear una nueva publicación</h1>
+
+    {% with mensajes = get_flashed_messages() %}
+      {% if mensajes %}
+        <ul>
+          {% for msg in mensajes %}
+            <li>{{ msg }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <form method="post">
+        <label for="contenido">Contenido:</label><br>
+        <textarea name="contenido" rows="5" cols="40" required></textarea><br><br>
+        <input type="submit" value="Publicar">
+    </form>
+
+    <p><a href="{{ url_for('publicaciones.index') }}">Volver al inicio</a></p>
+</body>
+</html>
