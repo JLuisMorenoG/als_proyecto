@@ -16,5 +16,8 @@ class Usuario(UserMixin):
 
     @staticmethod
     def buscar_por_email(sirope_instancia, email):
-        usuarios = sirope_instancia.find(Usuario, lambda u: u.email == email)
-        return next(usuarios, None)
+        usuarios = sirope_instancia.load_all(Usuario)
+        for u in usuarios:
+            if u.email == email:
+                return u
+        return None
