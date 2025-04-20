@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Inicio</title>
+</head>
+<body>
+    <h1>¡Bienvenido, {{ usuario.nombre }}!</h1>
+    <p>Estás dentro de la aplicación.</p>
+    <p><a href="{{ url_for('auth.logout') }}">Cerrar sesión</a></p>
+</body>
+</html>
