@@ -3,24 +3,27 @@ from flask_login import LoginManager
 import sirope
 
 login_manager = LoginManager()
-s = None
+s = None  # instancia global de Sirope
+
 
 def create_app():
     global s
     app = Flask(__name__)
-    app.secret_key = 'tu-clave-secreta'  # cámbiala por seguridad
+    app.secret_key = 'clave-secreta-supersegura'  # ¡Cámbiala en producción!
 
     s = sirope.Sirope()
 
+    # Configurar Flask-Login
     login_manager.init_app(app)
-    login_manager.login_view = "auth.login"  # ruta donde redirigir si no logueado
+    login_manager.login_view = "auth.login"
 
+    # Registrar blueprints
     from .routes import auth, publicaciones
-
     app.register_blueprint(auth.bp)
     app.register_blueprint(publicaciones.bp)
 
     return app
+
 
 def get_sirope():
     global s
