@@ -11,7 +11,8 @@ def create_app():
     app = Flask(__name__)
     app.secret_key = 'clave-secreta-supersegura'  # ¡Cámbiala en producción!
 
-    s = sirope.Sirope()
+    import redis
+    s = sirope.Sirope(redis.Redis(host="redis", port=6379, db=0))
 
     # Configurar Flask-Login
     login_manager.init_app(app)
